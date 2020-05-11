@@ -18,7 +18,7 @@ fetch('http://localhost:3000/api/cameras')
                         allArticles.innerHTML+=` 
                     <div class=articles-lists-item>
                         <div class="item-pic">  
-                            <img class="cards__item__thumb--img" src="${data[i].imageUrl}" alt="Appareil photo vintage ${data[i].name}" height="300" width="450">
+                            <img class="item-pic-menu" src="${data[i].imageUrl}" alt="Appareil photo vintage ${data[i].name}" height="300" width="450">
                         </div>                    
                         <div class="item-body">
                             <h3 class="item-body-title">${data[i].name}</h3>

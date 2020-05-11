@@ -44,8 +44,8 @@ fetch(urlDetail)
                                     
                             <form class="card_form" action="panier.html?id=${data._id}">
                                 <div class= choose-lense>
-                                    <label class="card__orm-label" for="lenses" id=lensesTest ><strong>Choisir une lentilles : </strong> </label>
-                                    <select id="lenses" class="card_form_select js-lensesSelectAllOption" aria-label="Sélectionner la lentille de votre choix"></select>                    
+                                    <label class="card-form-label" for="lenses" id=lensesTest ><strong>Choisir une lentilles : </strong> </label>
+                                    <select id="lenses" class="card-form-select" aria-label="Sélectionner la lentille de votre choix"></select>                    
                                 </div>
                                 <button class="btn" type="submit" aria-label="Valider et accéder au panier">Valider</button>
                             </form>            
@@ -54,7 +54,7 @@ fetch(urlDetail)
       const select = document.getElementById("lenses")
       for (let i = 0; i < data.lenses.length; i++) {
             select.innerHTML +=
-            `<option class="card__form__select--option" value="${data.lenses[i]}">${data.lenses[i]}</option>`             
+            `<option class="card-form-select-option" value="${data.lenses[i]}">${data.lenses[i]}</option>`             
             }          
           }
         }
