@@ -1,0 +1,151 @@
+body {
+    width: 100%;
+    height: auto;  
+    margin: 0px;
+    padding: 0px;
+}
+
+a {
+    text-decoration: none;    
+}
+
+p, label{
+    font-family:sans-serif;
+}
+
+h3 {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 2em;
+}
+
+li{
+   list-style: none; 
+}
+
+ul {
+    margin: 0px auto;
+}
+
+.nav-title {
+    margin : 10px 30px;
+    color: white;
+    font-family: sans-serif;
+    font-size: 30px;
+}
+
+header {
+        
+    width: 100%;
+    background-color: #579c87;       
+    display: flex;    
+    justify-content: space-around;
+    align-items: center;   
+    height: 100px;
+}
+
+.logo {
+    display: inline-block;
+    
+}
+
+.site-navigation {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 50px;
+    background-color: white;
+}
+
+h2 {
+    font-family: sans-serif;
+    text-align: center;
+}
+
+.articles-lists-item {
+    background-color: cornflowerblue;
+    display: flex; 
+    justify-content: space-around;
+    margin: 20px auto;
+    border-radius: 20px;
+    padding: 20px 20px;
+}
+
+#addProd{
+    background-color: cornflowerblue;
+    align-items: center;
+    margin: 20px auto;
+    border-radius: 20px;
+    padding: 20px 20px;
+
+}
+
+.item-pic{
+    display: flex;
+    justify-content: center;;
+    align-content: center;
+    align-items: center;
+}
+
+.item-choise{
+    display: flex;
+    align-items: center;;
+}
+
+.btn {
+    
+    background-color:red;
+    font-family: sans-serif ;
+    font-size: 30px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    margin: 50px auto;
+
+}
+
+.item-body {
+    margin: 50px 20px;
+}
+
+
+
+.card_form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 50px;
+}
+
+footer{
+    text-align: center;
+}
+
+.form-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-addresse {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-info-legend, .form-address-legend {
+    font-family: cursive;
+    font-size: 20px;
+    margin: 20px 0px;
+}
+
+.form-content{
+    background-color: cornflowerblue;
+    padding: 50px 100px;
+    border-radius: 20px;
+}

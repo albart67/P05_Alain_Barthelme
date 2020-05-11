@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css".css>
+    
+    <title>Document</title>
+</head>
+<body>
+    <header class="top">
+            <div class="logo">
+                <img src="images/15675819263013_image1.png" height="90" width="150" alt="Logo Oricono">
+            </div>
+        <nav>
+            <ul class="site-navigation">
+                <li> <a class= "nav-title" href="index.html"> ACCEUIL </a></li>
+                <li> <a class= "nav-title" href="panier.html"> PANIER </a></li>                        
+            </ul>   
+        </nav>
+    </header>  				
+		<main class="content">
+                <h1 class="banner-title">Valider le panier</h1>
+                
+			<div class= "form-content">	
+
+                <div class="form-info">
+                    <legend class="form-info-legend">Vos coordonnées : </legend>
+
+                    <label for="nom">Nom :</label>
+                    <input type="text" name="nom" id="nom" required />
+
+                    <label for="prenom">Prénom :</label>
+                    <input type="text" name="prenom" id="prenom" required />
+
+                    <label for="email">E-mail :</label>
+                    <input type="email" name="email" id="email" required />
+
+                    <label for="phone">Téléphone (optionnel) :</label>
+                    <input type="tel" name="phone" id="phone" />
+                </div>
+
+                <div class="form-addresse">
+                    <legend class="form-address-legend">Adresse de livraison : </legend>
+
+                    <label for="adresse">Adresse :</label>
+                    <input type="text" name="adresse" id="adresse" required />
+
+                    <label for="zip">Code postal :</label>
+                    <input type="number" name="zip" id="zip" required />
+
+                    <label for="ville">Ville :</label>
+                    <input type="text" name="ville" id="ville" required />
+
+                    <label for="pays">Pays :</label>
+                                    <input type="text" name="pays" id="pays" required />
+
+                </div>
+				<button class="btn" type="submit" aria-label="Valider vos informations et cliquer sur confirmer">confirmer</button>
+			</div>								
+		</main>
+	<footer class="footer">
+			<p class="footer-info">Orinoco vous remercie de votre visite.</p>
+			<p class="footer-copyright">Copyright © 2019 - 2020 | Orinoco</p>
+	</footer>
+		
+
+	
+		<!-- Script JavaScript-->
+		<script type="module" src="index.js"></script>
+	</body>
+</html>
