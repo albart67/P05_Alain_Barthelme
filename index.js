@@ -43,19 +43,3 @@ fetch('http://localhost:3000/api/cameras')
 
 
 
-
-  const getTodosAsync = async function () {
-    try {
-        const response = await fetch('http://localhost:4652/');
-        if (response.ok) {
-            const jsonData = await response.json();
-            console.log(jsonData);
-        } else {
-            console.error('server response : ' + response.status);
-        }
-    } catch (error) {
-        console.error(error);
-    }
-}
-
-getTodosAsync();
