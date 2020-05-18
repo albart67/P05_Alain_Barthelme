@@ -14,8 +14,9 @@ p, label{
 }
 
 h3 {
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: sans-serif;
     font-size: 2em;
+    color: white;
 }
 
 li{
@@ -91,6 +92,15 @@ h2 {
     justify-content: center;;
     align-content: center;
     align-items: center;
+    
+}
+
+.item-pic-menu{
+    border-radius: 5px;
+}
+
+.cards-item{
+    border-radius: 5px;
 }
 
 .item-choise{
@@ -105,12 +115,13 @@ h2 {
     font-size: 30px;
     padding: 10px 20px;
     border-radius: 20px;
-    margin: 50px auto;
+    margin: 30px auto;
 
 }
 
 .item-body {
-    margin: 50px 20px;
+    margin: 30px 20px;
+    width: 300px;
 }
 
 
@@ -148,4 +159,47 @@ footer{
     background-color: cornflowerblue;
     padding: 50px 100px;
     border-radius: 20px;
+    margin-top: 30px;
+}
+
+.table-title{
+   
+
+    background-color: #579c87;
+}
+
+table{
+    border: solid 2px black;
+    font-family: sans-serif;
+}
+th{
+    border: solid 1px black;
+}
+
+.table-content{    
+    background-color: burlywood;
+}
+
+.iconShopping{
+    display: flex;
+    align-items: center;
+    justify-content: space-between,
+}
+
+.icon-number{
+    font-size: large;
+    color: blue;
+    font-family:sans-serif;
+    font-weight: bold;
+   
+}
+
+.fa{
+    font-size: large;
+}
+
+.fa-shopping-cart{
+    font-size: 50px;
+    color:blue;
+    margin: 0px 10px;
 }

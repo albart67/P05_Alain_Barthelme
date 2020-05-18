@@ -3,26 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css".css>
-    
+    <link rel="stylesheet" href="style.css".css>  
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+  
     <title>Document</title>
+
+
+
+    
 </head>
 <body>
-    <header class="top">
+        <header class="top">
             <div class="logo">
                 <img src="images/15675819263013_image1.png" height="90" width="150" alt="Logo Oricono">
             </div>
-        <nav>
-            <ul class="site-navigation">
-                <li> <a class= "nav-title" href="index.html"> ACCEUIL </a></li>
-                <li> <a class= "nav-title" href="panier.html"> PANIER </a></li>                        
-            </ul>   
-        </nav>
-    </header>  				
+            <nav>
+                <ul class="site-navigation">
+                    <li> <a class= "nav-title" href="index.html"> ACCUEIL </a></li>
+                    <li> <a class= "nav-title" href="panier.html"> PANIER </a></li>   
+                    <li class="iconShopping">
+                        <p class="icon-number">0</p>
+                        <i class="fa fa-shopping-cart fa-2x"></i>                      
+                </ul>   
+             </nav>
+        </header>           
+
 		<main class="content">
-                <h1 class="banner-title">Valider le panier</h1>
                 
-			<div class= "form-content">	
+                <div class="cartBox">
+                    <div class="cart">
+                        <h2>VOTRE PANIER</h2>
+                        <table></table>
+                    </div>
+                </div>
+
+                
+			<form method= "POST " id="form" class="form-content">	
 
                 <div class="form-info">
                     <legend class="form-info-legend">Vos coordonnées : </legend>
@@ -53,20 +69,22 @@
                     <input type="text" name="ville" id="ville" required />
 
                     <label for="pays">Pays :</label>
-                                    <input type="text" name="pays" id="pays" required />
+                    <input type="text" name="pays" id="pays" required />
 
                 </div>
-				<button class="btn" type="submit" aria-label="Valider vos informations et cliquer sur confirmer">confirmer</button>
-			</div>								
+				<button class="btn" type="submit" id="confirmation" aria-label="Valider vos informations et cliquer sur confirmer">confirmer</button>
+            </form>		
+            
+            <p id = "erreur">Veuillez renseigner tout les champs</p>
 		</main>
 	<footer class="footer">
 			<p class="footer-info">Orinoco vous remercie de votre visite.</p>
 			<p class="footer-copyright">Copyright © 2019 - 2020 | Orinoco</p>
-	</footer>
-		
-
+	</footer>		
 	
 		<!-- Script JavaScript-->
-		<script type="module" src="index.js"></script>
+        
+        <script src="panier.js"></script>        
+
 	</body>
 </html>

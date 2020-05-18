@@ -2,8 +2,16 @@
     <html lang="fr">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">        
         <link rel="stylesheet" href="style.css".css>
+        <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+
+        <script>
+		
+         
+        </script>
+
+
         
         <title>Document</title>
     </head>
@@ -15,7 +23,10 @@
             <nav>
                 <ul class="site-navigation">
                     <li> <a class= "nav-title" href="index.html"> ACCUEIL </a></li>
-                    <li> <a class= "nav-title" href="panier.html"> PANIER </a></li>                        
+                    <li> <a class= "nav-title" href="panier.html"> PANIER </a></li>   
+                    <li class="iconShopping">
+                        <p class="icon-number">0</p>
+                        <i class="fa fa-shopping-cart fa-2x"></i>                      
                 </ul>   
             </nav>
         </header>           
@@ -27,10 +38,13 @@
 					<div id="addProd">
 
 					<!-- ajout dynamic du produit choisi a partir de  detailx.js-->
-
-					</div>
+                    
+                    </div>                 
 										
-				</article>
+                </article>
+
+                <button class="btn choiseProduct" type="submit" aria-label="Valider et accéder au panier">Ajouter au panier</button> 
+                             
 		</main>
 
 		<footer class="footer">
