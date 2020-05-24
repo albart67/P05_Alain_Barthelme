@@ -24,7 +24,7 @@ window.onload = function(){
                                     <p class="item-body-lenses"><strong>Lentilles :</strong> ${data[i].lenses}</p>
                                     <p class="item-body-price"><strong>Prix :</strong> ${data[i].price / 100} €</p>
                                     <botton class="item-choise" id="bouton" >
-                                    <a class="btn btn-show-detail" id="clic" href="produit.html?id=${data[i]._id}">Sélectionner</a>
+                                    <a class="btn btn-show-detail" id="clic" href="produit.html?id=${data[i]._id}">Voir le détail du produit</a>
                                     </botton>
                                 </div>
                             </div>`                              

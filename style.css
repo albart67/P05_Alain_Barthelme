@@ -5,6 +5,10 @@ body {
     padding: 0px;
 }
 
+main{
+    background-color: #f8f8f8 ;
+}
+
 a {
     text-decoration: none;    
 }
@@ -13,10 +17,18 @@ p, label{
     font-family:sans-serif;
 }
 
+h1{
+    font-family: sans-serif;
+}
+
 h3 {
     font-family: sans-serif;
     font-size: 2em;
-    color: white;
+    color: black;
+    border-radius: 5px;
+    text-align: center;
+    background-color: white;
+    border: solid 2px black;
 }
 
 li{
@@ -29,15 +41,16 @@ ul {
 
 .nav-title {
     margin : 10px 30px;
-    color: white;
+    color: black;
     font-family: sans-serif;
     font-size: 30px;
+    font-weight: bold;
 }
 
 header {
         
     width: 100%;
-    background-color: #579c87;       
+    background-color:#f3e9f1 ;       
     display: flex;    
     justify-content: space-around;
     align-items: center;   
@@ -60,8 +73,7 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px 50px;
-    background-color: white;
+    padding: 20px 50px;    
 }
 
 h2 {
@@ -70,7 +82,7 @@ h2 {
 }
 
 .articles-lists-item {
-    background-color: cornflowerblue;
+    background-color: rgb(196, 210, 236);
     display: flex; 
     justify-content: space-around;
     margin: 20px auto;
@@ -79,7 +91,7 @@ h2 {
 }
 
 #addProd{
-    background-color: cornflowerblue;
+    background-color:  rgb(196, 210, 236);
     align-items: center;
     margin: 20px auto;
     border-radius: 20px;
@@ -108,15 +120,15 @@ h2 {
     align-items: center;;
 }
 
-.btn {
+.btn  {
     
     background-color:red;
     font-family: sans-serif ;
-    font-size: 30px;
+    font-size: 20px;
     padding: 10px 20px;
-    border-radius: 20px;
-    margin: 30px auto;
-
+    border-radius: 10px;
+    margin: 30px auto;   
+    color: black;     
 }
 
 .item-body {
@@ -156,29 +168,49 @@ footer{
 }
 
 .form-content{
-    background-color: cornflowerblue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(196, 210, 236);
     padding: 50px 100px;
     border-radius: 20px;
     margin-top: 30px;
+   
 }
 
-.table-title{
-   
 
-    background-color: #579c87;
+.table-title{
+    font-weight: bold;   
+
+    background-color:  rgb(196, 210, 236);
 }
 
 table{
-    border: solid 2px black;
+    border-collapse: collapse; /* Les bordures du tableau seront collées (plus joli) */
+    
     font-family: sans-serif;
 }
 th{
     border: solid 1px black;
+    padding:5px 10px;
 }
 
-.table-content{    
-    background-color: burlywood;
+.table-content th {   
+    font-weight: lighter;
+    
 }
+
+tfoot{
+    background-color: coral;
+}
+
+.table-content .suppr {
+    text-decoration: underline;
+    color: black;
+    font-weight: bolder;
+    border: transparent;
+}
+
 
 .iconShopping{
     display: flex;
@@ -200,6 +232,18 @@ th{
 
 .fa-shopping-cart{
     font-size: 50px;
-    color:blue;
+    color:rgb(36, 36, 42);
     margin: 0px 10px;
+}
+
+#orderConfirm{
+border: solid 1px black;
+padding: 10px;
+margin: 100px auto;
+
+}
+
+#resetCart {
+    margin: 50px auto;
+    font-size: 1.5em;
 }

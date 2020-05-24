@@ -1,19 +1,18 @@
 
-window.onload = function(){     
+window.onload = function(){         
     
-    //création du panier
-
+    //création du panier en récupérant les donnés du localStorage
     const cartBox = document.querySelector('.cartBox');             
     
     const cardBoxTable = cartBox.querySelector('table');
         let tableData = '';
-        tableData += '<tr class = "table-title"><th>Référence</th><th>Produit</th><th>Quantités</th><th>Prix Unitaire</th><th></th></tr>';
+        tableData += `<thead><tr class = "table-title"><th>Référence</th><th>Produit</th><th>Quantités</th><th>Prix Unitaire</th></tr></thead>`;
     
-        if(JSON.parse(localStorage.getItem('items'))[0] === null){
-            tableData += '<tr><td colspan="5">No items found</td></tr>'
+        if(JSON.parse(localStorage.getItem('items'))[0] == null){
+            tableData += `<tr class= "table-content"><td colspan="5">Pas de produits dans le panier !</td></tr>`
         }else{
             JSON.parse(localStorage.getItem('items')).map(data=>{
-                tableData += '<tr class= "table-content"><th>'+data.id+'</th><th>'+data.name+'</th><th>'+data.no+'</th><th>'+data.price+'</th><th><a href="#" onclick=Delete(this);>Supprimer</a></th></tr>';
+                tableData += `<tr class= "table-content"><th>${data.id}</th><th>${data.name}</th><th>${data.no}</th><th>${data.price}</th><th class="suppr"><a href="#" onclick=Delete(this);>Supprimer</a></th></tr>`;
             });
         };
            
@@ -27,11 +26,13 @@ window.onload = function(){
             for (i=0; i<monPanier.length; i++) {
                 Total += monPanier[i].price*monPanier[i].no            
             }
+
+            console.log(monPanier);
             console.log(Total);
     
             //ajout du total dans le tableau
              
-            tableData += '<tr class="total"><th>Prix Total</th><th></th><th></th><th>'+Total+' € </thr></tr> '
+            tableData += `<tfoot><tr class="total"><th>Prix Total</th><th></th><th></th><th>${Total} € </thr></tr></tfoot>`
             cardBoxTable.innerHTML = tableData;   
             
             //indication du nombre de produits dans le panier
@@ -57,8 +58,8 @@ window.onload = function(){
     };
 
 
-// Récupération des informations du formulaire pour requête POST au serveur
 
+// Récupération des informations du formulaire pour la requête POST au serveur
 const form = document.getElementById("form");
 const nom = document.getElementById("nom");
 const prenom = document.getElementById("prenom");
@@ -66,7 +67,9 @@ const addresse = document.getElementById("adresse");
 const ville = document.getElementById("ville");
 const email = document.getElementById("email");
 
-form.addEventListener("submit", function (event) { // Au moment du la soumission du formulaire :
+
+// Requèté POST avec les éléments du panier + coordonnés du formulaire  :
+form.addEventListener("submit", function (event) { 
     event.preventDefault()
     ///Creation d'une variable contact contenant les informations de contact saisie par l'utilisateur
     const contact = {
@@ -77,42 +80,45 @@ form.addEventListener("submit", function (event) { // Au moment du la soumission
         email: email.value
     }
 
-    console.log(contact)
+    //console.log(contact)
 
-    const products = [] // Création d'une variables "products" qui contient les informations du panier
-   // for (let i = 0; i < monPanier.length; i++) {
-    //    products.push(monPanier[i].id)
-   // }
+    // Création d'une variables "products" qui contient les informations du panier
+    monPanier = [];
+    monPanier = JSON.parse(localStorage.getItem('items'));
+    const products = [] 
+    for (let i = 0; i < monPanier.length; i++) {
+      products.push(monPanier[i].id.trim())
+    }
 
-    console.log(products)
-
-
-    let data = { contact, products } // Création d'une variable "data" qui contient les 2 éléments à transmettre au serveur
-    console.log(data)
-   // const dataS = JSON.stringify(data)
-    //console.log(dataS);
-    //console.log(typeof(dataS))
-
+    //console.log(products)    
     
-  let achat = JSON.stringify(data);
-  console.log(achat);
+    let data = { contact, products } // Création d'une variable "data" qui contient les 2 éléments à transmettre au serveur
+    //console.log(data)   
+    
+    let achat = JSON.stringify(data);
+    console.log(achat);     
 
-  
-  let request = new XMLHttpRequest();
-  request.onreadystatechange = function () {
-    if (this.readyState == XMLHttpRequest.DONE) {
-      let confirmation = JSON.parse(this.responseText);
-      console.log(confirmation);
+
+    let request = new XMLHttpRequest();
+    request.onreadystatechange = function () {
+        if (this.readyState == XMLHttpRequest.DONE) {
+        let confirmation = JSON.parse(this.responseText);
+        console.log(confirmation);
+        localStorage.setItem("confirmation",JSON.stringify(confirmation));
+        window.location.href = "confirmation.html";           
     };
   };
-  request.open("post", "http://localhost:3000/api/cameras/order");
-  request.setRequestHeader("Content-Type", "application/json");
-  request.send(achat);
 
+    request.open("post", "http://localhost:3000/api/cameras/order");
+    request.setRequestHeader("Content-Type", "application/json");
+    request.send(achat);
 
+    localStorage.clear();
 })
 
+
 /*
+
 //envoi des éléments au serveur
 //const urlPost = 'http://localhost:3000/api/cameras/order'
     
@@ -127,42 +133,4 @@ form.addEventListener("submit", function (event) { // Au moment du la soumission
 })
 
 */
-/*
 
-
-var bla = 0;
-document.getElementById("confirmation").addEventListener("click", function(){
-      
-
-var inputs = document.getElementsByTagName("input");
-
-for (let i=0; i<inputs.length; i++){
-    console.log(inputs[i])
-    if(bla[i].value==0){
-        erreur = "Veuillez renseigner tout les champs";
-    }
-    
-}
-
-if (erreur) {
-    document.getElementById("erreur").innerHTML = erreur;
-}
-*/
-
-/*
-      var nom = document.getElementById('nom');
-      var prenom = document.getElementById('prenom');
-      var email = document.getElementById('email');
-      var phone = document.getElementById('phone');
-      var adresse = document.getElementById('adresse');
-      var zip = document.getElementById('zip');
-      var ville = document.getElementById('ville');
-      var pays = document.getElementById('pays');
-    
-    alert('Formulaire envoyé');
-
-
-
-  })
-
-  */

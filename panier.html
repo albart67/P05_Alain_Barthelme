@@ -15,7 +15,7 @@
 <body>
         <header class="top">
             <div class="logo">
-                <img src="images/15675819263013_image1.png" height="90" width="150" alt="Logo Oricono">
+                <a class= "nav-title" href="index.html"><img src="images/15675819263013_image1.png" height="90" width="150" alt="Logo Oricono"></a>
             </div>
             <nav>
                 <ul class="site-navigation">
@@ -23,7 +23,7 @@
                     <li> <a class= "nav-title" href="panier.html"> PANIER </a></li>   
                     <li class="iconShopping">
                         <p class="icon-number">0</p>
-                        <i class="fa fa-shopping-cart fa-2x"></i>                      
+                        <a class= "cart-icon" href="panier.html"><i class="fa fa-shopping-cart fa-2x"></i></a>                       
                 </ul>   
              </nav>
         </header>           
@@ -51,9 +51,7 @@
 
                     <label for="email">E-mail :</label>
                     <input type="email" name="email" id="email" required />
-
-                    <label for="phone">Téléphone (optionnel) :</label>
-                    <input type="tel" name="phone" id="phone" />
+                    
                 </div>
 
                 <div class="form-addresse">
@@ -61,29 +59,21 @@
 
                     <label for="adresse">Adresse :</label>
                     <input type="text" name="adresse" id="adresse" required />
-
-                    <label for="zip">Code postal :</label>
-                    <input type="number" name="zip" id="zip" required />
-
+                   
                     <label for="ville">Ville :</label>
-                    <input type="text" name="ville" id="ville" required />
-
-                    <label for="pays">Pays :</label>
-                    <input type="text" name="pays" id="pays" required />
+                    <input type="text" name="ville" id="ville" required />                    
 
                 </div>
 				<button class="btn" type="submit" id="confirmation" aria-label="Valider vos informations et cliquer sur confirmer">confirmer</button>
-            </form>		
+            </form>		            
             
-            <p id = "erreur">Veuillez renseigner tout les champs</p>
 		</main>
 	<footer class="footer">
 			<p class="footer-info">Orinoco vous remercie de votre visite.</p>
 			<p class="footer-copyright">Copyright © 2019 - 2020 | Orinoco</p>
 	</footer>		
 	
-		<!-- Script JavaScript-->
-        
+		<!-- Script JavaScript-->        
         <script src="panier.js"></script>        
 
 	</body>
