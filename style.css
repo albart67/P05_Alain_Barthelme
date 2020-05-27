@@ -6,7 +6,9 @@ body {
 }
 
 main{
-    background-color: #f8f8f8 ;
+    /*background-color: #f8f8f8 ;*/
+    background-image:url(images/vintage3.jpg);   
+
 }
 
 a {
@@ -38,6 +40,9 @@ li{
 ul {
     margin: 0px auto;
 }
+nav {
+    display: flex;
+}
 
 .nav-title {
     margin : 10px 30px;
@@ -49,12 +54,13 @@ ul {
 
 header {
         
-    width: 100%;
+    width: auto;
     background-color:#f3e9f1 ;       
     display: flex;    
     justify-content: space-around;
     align-items: center;   
     height: 100px;
+    margin: 0px auto;
 }
 
 .logo {
@@ -108,11 +114,16 @@ h2 {
 }
 
 .item-pic-menu{
-    border-radius: 5px;
+    border-radius: 5px;    
+    width: 600px;
+    height: auto;
 }
+
 
 .cards-item{
     border-radius: 5px;
+    width: 600px;
+    height: auto;
 }
 
 .item-choise{
@@ -163,6 +174,7 @@ footer{
 
 .form-info-legend, .form-address-legend {
     font-family: cursive;
+    font-weight: bold;
     font-size: 20px;
     margin: 20px 0px;
 }
@@ -176,6 +188,10 @@ footer{
     border-radius: 20px;
     margin-top: 30px;
    
+}
+
+.checkInput {
+    color : red;
 }
 
 
@@ -197,7 +213,7 @@ th{
 
 .table-content th {   
     font-weight: lighter;
-    
+    background-color: white;    
 }
 
 tfoot{
@@ -209,6 +225,7 @@ tfoot{
     color: black;
     font-weight: bolder;
     border: transparent;
+    background-color: white;
 }
 
 
@@ -237,9 +254,10 @@ tfoot{
 }
 
 #orderConfirm{
-border: solid 1px black;
+border: solid 2px black;
 padding: 10px;
 margin: 100px auto;
+background-color: white;
 
 }
 
@@ -247,3 +265,114 @@ margin: 100px auto;
     margin: 50px auto;
     font-size: 1.5em;
 }
+
+
+/*RESPONSIVITE MEDIA QUERIES
+
+
+    MEDIA QUERIES FOR RESPONSIVENESS :
+    ---+--------+--------+------------
+    xs |    0px |  575px | Smartphones (portrait)
+    sm |  576px |  767px | Smartphones (landscape)
+    md |  768px |  991px | Tablets
+    lg |  992px | 1199px | Small screens
+    xl | 1200px |    +px | Large screens, TV etc...
+
+
+*/
+
+
+
+@media screen and (max-width: 1199px) 
+    {
+       
+    
+    }
+@media screen and (max-width: 991px) 
+    {    
+    .articles-lists-item {
+        display: flex;
+        flex-direction: column;
+    }   
+    
+    .item-body {
+        margin: 30px auto;
+    }
+
+    .content {
+        padding: 20px 0px;
+    }          
+}
+
+@media screen and (max-width: 767px)
+    {
+     th {
+         font-size: 12px;
+     }
+
+    .cards-item {
+        width: 400px;
+        height: auto;
+     }
+    
+       
+}
+
+@media screen and (max-width: 575px) 
+    {
+        header {
+            flex-direction: column;
+            height: 150px;
+        }
+
+        .site-navigation .nav-title {
+            font-size: 15px;
+            
+        }
+        
+        ul {
+            padding-inline-start: 0px;
+        }
+
+        th {
+            font-size: 8px;
+            padding:5px 0px;
+        }
+   
+        .form-info-legend,.form-address-legend, .form-info, .form-addresse {
+            font-size: 10px;
+        }
+        .icon-number, .fa-2x{
+            font-size: 1em;
+        }
+
+        .form-content{
+            padding: 20px 20px;
+        }
+
+        .cards-item {
+            width: 280px;
+            height: auto;
+         }  
+         
+         .articles-title {
+             font-size: 1em;
+         }
+
+         .item-pic-menu{
+            border-radius: 5px;
+            height: 200px;
+            width: 280px;
+        }
+
+        .articles-lists-item {
+            margin: 20px 0px ;
+            padding: 10px 0px;
+        }
+
+        .item-body{
+            padding: 0px 10px;
+        }
+     
+}
+

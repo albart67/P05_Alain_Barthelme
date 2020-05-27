@@ -1,80 +1,91 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css".css>  
-    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
-  
+    <link rel="stylesheet" href="style.css" .css>
+    <link rel="stylesheet" type="text/css"
+        href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+
     <title>Document</title>
 
 
 
-    
+
 </head>
+
 <body>
-        <header class="top">
-            <div class="logo">
-                <a class= "nav-title" href="index.html"><img src="images/15675819263013_image1.png" height="90" width="150" alt="Logo Oricono"></a>
+    <header class="top">
+        <div class="logo">
+            <a class="nav-title" href="index.html"><img src="images/15675819263013_image1.png" height="90" width="150"
+                    alt="Logo Oricono"></a>
+        </div>
+        <nav>
+            <ul class="site-navigation">
+                <li> <a class="nav-title" href="index.html"> ACCUEIL </a></li>
+                <li> <a class="nav-title" href="panier.html"> PANIER </a></li>
+                <li class="iconShopping">
+                    <p class="icon-number">0</p>
+                    <a class="cart-icon" href="panier.html"><i class="fa fa-shopping-cart fa-2x"></i></a>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="content">
+
+        <div class="cartBox">
+            <div class="cart">
+                <h2>VOTRE PANIER</h2>
+                <table></table>
             </div>
-            <nav>
-                <ul class="site-navigation">
-                    <li> <a class= "nav-title" href="index.html"> ACCUEIL </a></li>
-                    <li> <a class= "nav-title" href="panier.html"> PANIER </a></li>   
-                    <li class="iconShopping">
-                        <p class="icon-number">0</p>
-                        <a class= "cart-icon" href="panier.html"><i class="fa fa-shopping-cart fa-2x"></i></a>                       
-                </ul>   
-             </nav>
-        </header>           
+        </div>
 
-		<main class="content">
-                
-                <div class="cartBox">
-                    <div class="cart">
-                        <h2>VOTRE PANIER</h2>
-                        <table></table>
-                    </div>
-                </div>
 
-                
-			<form method= "POST " id="form" class="form-content">	
+        <form method="POST " id="form" class="form-content">
 
-                <div class="form-info">
-                    <legend class="form-info-legend">Vos coordonnées : </legend>
+            <div class="form-info">
+                <legend class="form-info-legend">Vos coordonnées : </legend>
 
-                    <label for="nom">Nom :</label>
-                    <input type="text" name="nom" id="nom" required />
+                <label for="nom">Nom :</label>
+                <input type="text" name="nom" id="nom" required />
+                <p id="wrongName" class="checkInput"></p>
 
-                    <label for="prenom">Prénom :</label>
-                    <input type="text" name="prenom" id="prenom" required />
+                <label for="prenom">Prénom :</label>
+                <input type="text" name="prenom" id="prenom" required />
+                <p id="wrongForname" class="checkInput"></p>
 
-                    <label for="email">E-mail :</label>
-                    <input type="email" name="email" id="email" required />
-                    
-                </div>
+                <label for="email">E-mail :</label>
+                <input type="email" name="email" id="email" required />
+                <p id="wrongEmail" class="checkInput"></p>
 
-                <div class="form-addresse">
-                    <legend class="form-address-legend">Adresse de livraison : </legend>
+            </div>
 
-                    <label for="adresse">Adresse :</label>
-                    <input type="text" name="adresse" id="adresse" required />
-                   
-                    <label for="ville">Ville :</label>
-                    <input type="text" name="ville" id="ville" required />                    
+            <div class="form-addresse">
+                <legend class="form-address-legend">Adresse de livraison : </legend>
 
-                </div>
-				<button class="btn" type="submit" id="confirmation" aria-label="Valider vos informations et cliquer sur confirmer">confirmer</button>
-            </form>		            
-            
-		</main>
-	<footer class="footer">
-			<p class="footer-info">Orinoco vous remercie de votre visite.</p>
-			<p class="footer-copyright">Copyright © 2019 - 2020 | Orinoco</p>
-	</footer>		
-	
-		<!-- Script JavaScript-->        
-        <script src="panier.js"></script>        
+                <label for="adresse">Adresse :</label>
+                <input type="text" name="adresse" id="adresse" required />
+                <p id="wrongAdress" class="checkInput"></p>
 
-	</body>
+                <label for="ville">Ville :</label>
+                <input type="text" name="ville" id="ville" required />
+                <p id="wrongCity" class="checkInput"></p>
+
+            </div>
+            <button class="btn" type="submit" id="confirmation"
+                aria-label="Valider vos informations et cliquer sur confirmer">confirmer</button>
+        </form>
+
+    </main>
+    <footer class="footer">
+        <p class="footer-info">Orinoco vous remercie de votre visite.</p>
+        <p class="footer-copyright">Copyright © 2019 - 2020 | Orinoco</p>
+    </footer>
+
+    <!-- Script JavaScript-->
+    <script src="panier.js"></script>
+
+</body>
+
 </html>
