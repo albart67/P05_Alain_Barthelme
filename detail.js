@@ -96,7 +96,7 @@ window.onload = function () {
         });
 
 
-        //indication du nombre de produits dans le panier
+        //indication du nombre de produits dans le panier en entête
         const iconShopping = document.querySelector('.iconShopping');
         const iconShoppingP = document.querySelector('.iconShopping p');
 
