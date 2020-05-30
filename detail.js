@@ -4,12 +4,12 @@ const urlAPI = "http://localhost:3000/api/cameras"
 
 
 //Recherche de l'ID du produit selectionné dans l'URL
-const urlID = window.location.search;
-const urlParams = new URLSearchParams(urlID);
+const urlID = window.location.search; //Recherche la partie de l'url qui suis le ? inclus
+const urlParams = new URLSearchParams(urlID); //creation d'une const qui contient les paramères de l'url
 
-const idByArticle = urlParams.get('id');
 
-console.log(idByArticle)
+const idByArticle = urlParams.get('id'); // Methode pour rechercher la premiere valeur associé au paramètre id
+
 
 //On isole l'URL de l'article selectionné dans une const urlDetail
 const urlDetail = urlAPI + "/" + idByArticle;
@@ -17,7 +17,7 @@ const urlDetail = urlAPI + "/" + idByArticle;
 //On accède à l'element qui va recevoir le détail de l'article selectionné
 const addProduct = document.getElementById('addProd');
 
-//Requete serveur pour importer les donnés de l'article
+//Requete serveur pour importer les donnée de l'article
 fetch(urlDetail).then(function (response) {
     if (response.ok) {
         response.json().then(function (data) {
@@ -50,10 +50,10 @@ fetch(urlDetail).then(function (response) {
             }
         })
     } else {
-        console.error('server response : ' + response.status);
+        console.error('server response : ' + response.status);//affiche les erreurs serveur
     }
 })
-    .catch(function (error) {
+    .catch(function (error) {//affichage de l'erreur losrque la promesse n'a pas aboutie
         console.log('Il y a eu un problème avec l\'opération fetch: ' + error.message);
     });
 
@@ -66,22 +66,25 @@ window.onload = function () {
     for (let i = 0; i < attToCartBtn.length; i++) {
         attToCartBtn[i].addEventListener("click", function (e) {
             if (typeof (Storage) !== 'undefined') {
+
                 //On crée un objet contenant le local storage 
                 const localItems = JSON.parse(localStorage.getItem("items"));
                 let item = {
+                    //Recupération des donnés articles dans les éléments du detail article
                     id: document.getElementById("item-body-id").lastChild.textContent,
                     name: document.getElementById("item-body-title").textContent,
                     price: document.getElementById("item-body-price").lastChild.textContent,
-                    no: 1
+                    no: 1 //quantités pour cet article
                 };
-                //Si le local storage est vide on envoi le premier ojbet article dans le local storage
+
+                //Si le local storage est vide, à la selection de l'article on copie un premier objet article dans le local storage
                 if (localItems === null) {
                     items.push(item);
                     localStorage.setItem("items", JSON.stringify(items));
                     window.location.reload();
                 } else {
                     localItems.find(data => {
-                        //Si l'objet localItems contient déja un article similaire, on augmente la quantité de l'article sselectionné de 1
+                        //Si localItems contient déja un article similaire, on augmente la quantité de l'article selectionné de 1
                         if (item.id == data.id) {
                             item.no = data.no + 1;
                         } else {
@@ -90,7 +93,7 @@ window.onload = function () {
                         }
                     });
                     items.push(item); //on rajoute l'article selectionné dans l'objet items
-                    localStorage.setItem('items', JSON.stringify(items)); //on recharge le local storage avec l'objet items stringifié
+                    localStorage.setItem('items', JSON.stringify(items)); //on recharge le local storage avec l'objet items au format JSON
                     window.location.reload();
                 }
             } else {
@@ -102,12 +105,14 @@ window.onload = function () {
 
         //indication du nombre de produits dans le panier en entête
         const iconShoppingP = document.querySelector('.iconShopping p');
-
+        const localItems = JSON.parse(localStorage.getItem("items"));
         let no = 0;
-        JSON.parse(localStorage.getItem('items')).find(data => {
-            no = no + data.no
-        });
-        iconShoppingP.innerHTML = no;
+
+        for (let i = 0; i < localItems.length; i++) {
+            no = no + localItems[i].no;
+            iconShoppingP.innerHTML = no;
+        }
+
     }
 }
 

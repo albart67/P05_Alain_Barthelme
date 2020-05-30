@@ -4,13 +4,12 @@ window.onload = function () {
 
     const urlAPI = "http://localhost:3000/api/cameras"
 
-
     //Requete serveur pour l'affichage de l'ensemble des produits de type "cameras"
 
     //On accède à l'element qui va recevoir le détail de l'article selectionné
     const allArticles = document.getElementById('allArticlesList');
 
-    fetch(urlAPI).then(response => {
+    fetch(urlAPI).then(response => {//retourne promessse avec objet response
         if (response.ok) {
             response.json().then(function (data) {
                 for (let i = 0; i < data.length; i++) {
@@ -35,7 +34,7 @@ window.onload = function () {
         }
     })
         .catch(function (error) {
-            console.log('Il y a eu un problème avec l\'opération fetch: ' + error.message);
+            console.log('Il y a eu un problème avec l\'opération fetch: ' + error.message);//affichage de l'erreur losrque la promesse n'a pas aboutie
         });
 
 
@@ -43,9 +42,18 @@ window.onload = function () {
     const iconShoppingP = document.querySelector('.iconShopping p');
     let no = 0;
 
-    var tab1 = JSON.parse(localStorage.getItem('items')).find(data => {
-        no = no + data.no
-        console.log(tab1)
-    });
-    iconShoppingP.innerHTML = no;
+    /*   JSON.parse(localStorage.getItem('items')).find(data => {
+           no = no + data.no
+   
+       });
+       iconShoppingP.innerHTML = no;
+   }*/
+
+    const localItems = JSON.parse(localStorage.getItem("items"));
+    console.log(localItems)
+
+    for (let i = 0; i < localItems.length; i++) {
+        no = no + localItems[i].no;
+        iconShoppingP.innerHTML = no;
+    }
 }

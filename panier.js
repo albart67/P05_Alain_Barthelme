@@ -25,8 +25,6 @@ window.onload = function () {
     };
 
 
-
-
     //calcul du prix total du panier
     let Total = 0;
 
@@ -40,20 +38,23 @@ window.onload = function () {
     cardBoxTable.innerHTML = tableData;
 
 
-    //indication du nombre de produits dans le panier en entête
+    //indication du nombre de produits dans le panier en entête    
+
     const iconShoppingP = document.querySelector('.iconShopping p');
     let no = 0;
-    localItems.find(data => {
-        no = no + data.no;
-    });
-    iconShoppingP.innerHTML = no;
+
+    for (let i = 0; i < localItems.length; i++) {
+        no = no + localItems[i].no;
+        iconShoppingP.innerHTML = no;
+    }
+
 }
 
 
 //suppression d'un produit du panier
 function Delete(e) {
     let items = [];
-    //au clic zur "supprimer" récupération du localStorage et creation d'un nouvel objet sans l'article supprimé avec .filter
+    //au clic zur "supprimer" récupération du localStorage et creation d'un nouveau tableau sans l'article supprimé avec .filter
     JSON.parse(localStorage.getItem('items')).filter(data => {
         if (data.id != e.parentElement.parentElement.children[0].textContent) {
             items.push(data);
@@ -185,12 +186,12 @@ form.addEventListener("submit", function (event) {
             products.push(monPanier[i].id);
         }
 
-        let data = { contact, products } // Création d'un objet global "data" qui contient les 2 éléments à transmettre au serveur
+        let data = { contact, products } // Création d'un objet global "data" qui contient les 2 tableaux à transmettre au serveur
 
         let achat = JSON.stringify(data); //On converti notre objet global en format JSON
 
         let request = new XMLHttpRequest();
-        request.onreadystatechange = function () {
+        request.onreadystatechange = function () {//gestionnaire d'évenement invoqué à chaque fois que la ready state change.
             if (this.readyState == XMLHttpRequest.DONE) {
                 //Quand la requète est terminé, on recupère la réponse  
                 let confirmation = JSON.parse(this.responseText);

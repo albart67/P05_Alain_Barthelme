@@ -14,7 +14,7 @@ orderConfirm.innerHTML += `<h1>Votre Commande</h1><p>Merci ${respondeOrder.conta
 
 
 
-const resetCart = document.getElementById('resetCart');
+
 
 
 
