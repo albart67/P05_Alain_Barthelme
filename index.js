@@ -42,8 +42,10 @@ window.onload = function () {
     //indication du nombre de produits dans le panier en entête
     const iconShoppingP = document.querySelector('.iconShopping p');
     let no = 0;
-    JSON.parse(localStorage.getItem('items')).filter(data => {
+
+    var tab1 = JSON.parse(localStorage.getItem('items')).find(data => {
         no = no + data.no
+        console.log(tab1)
     });
     iconShoppingP.innerHTML = no;
 }

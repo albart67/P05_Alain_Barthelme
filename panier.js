@@ -1,4 +1,4 @@
-// Au chargement  de la page, le paner est rempli avec les donnés du localstorage
+// Au chargement  de la page, le panier est rempli avec les donnés du localstorage
 
 window.onload = function () {
 
@@ -10,15 +10,21 @@ window.onload = function () {
     const localItems = JSON.parse(localStorage.getItem("items"));
 
     let tableData = '';
+    //première ligne du tableau 
     tableData += `<thead><tr class="table-title"><th>Référence</th><th>Produit</th><th>Quantités</th><th>Prix Unitaire</th></tr></thead>`;
 
+    //message pour tableau vide
     if (localItems[0] == null) {
         tableData += `<tr class="table-content"><td colspan="5">Pas de produits dans le panier !</td></tr>`
     } else {
-        localItems.filter(data => {
+        //création des lignes du tableau d'après les éléments du local storage
+        localItems.forEach(function (data) {
             tableData += `<tr class="table-content"><th>${data.id}</th><th>${data.name}</th><th>${data.no}</th><th>${data.price}</th><th class="suppr"><a href="#" onclick=Delete(this);>Supprimer</a></th></tr>`;
         });
+
     };
+
+
 
 
     //calcul du prix total du panier
@@ -37,17 +43,17 @@ window.onload = function () {
     //indication du nombre de produits dans le panier en entête
     const iconShoppingP = document.querySelector('.iconShopping p');
     let no = 0;
-    localItems.filter(data => {
+    localItems.find(data => {
         no = no + data.no;
     });
     iconShoppingP.innerHTML = no;
 }
 
 
-//suppresion d'un produit du panier
+//suppression d'un produit du panier
 function Delete(e) {
     let items = [];
-    //au clic zur "supprimer" récupération du localStorage et creation d'un nouveau tableau sans l'article supprimé avec .filter
+    //au clic zur "supprimer" récupération du localStorage et creation d'un nouvel objet sans l'article supprimé avec .filter
     JSON.parse(localStorage.getItem('items')).filter(data => {
         if (data.id != e.parentElement.parentElement.children[0].textContent) {
             items.push(data);
@@ -68,7 +74,7 @@ const addresse = document.getElementById("adresse");
 const ville = document.getElementById("ville");
 const email = document.getElementById("email");
 
-var validForm = true;
+
 
 // Contrôle du nom pendant la saisie
 var validiteNom = "";
@@ -82,7 +88,6 @@ nom.addEventListener("input", function (e) {
         validiteNom = ""
     }
     document.getElementById("wrongName").textContent = validiteNom;
-
 });
 
 // Contrôle du prénom pendant la  saisie
@@ -100,7 +105,6 @@ prenom.addEventListener("input", function (e) {
         validitePrenom = "";
     }
     document.getElementById("wrongForname").textContent = validitePrenom;
-
 });
 
 
@@ -120,8 +124,8 @@ email.addEventListener("input", function (e) {
         validiteCourriel = "";
     }
     document.getElementById("wrongEmail").textContent = validiteCourriel;
-
 });
+
 
 // Contrôle de l'adresse pendant la saisie
 var validiteAdresse = "";
@@ -138,6 +142,7 @@ adresse.addEventListener("input", function (e) {
     }
     document.getElementById("wrongAdress").textContent = validiteAdresse;
 });
+
 
 // Contrôle de la ville pendant la saisie
 var validiteVille = "";
@@ -163,7 +168,7 @@ form.addEventListener("submit", function (event) {
     // Test de l'absence de messages d'erreurs dans le formulaire avant envoi de la requète 
     if (validiteNom.length + validitePrenom.length + validiteCourriel.length + validiteAdresse.length + validiteVille.length == 0) {
 
-        ///Creation d'une variable contact contenant les informations de contact saisie par l'utilisateur
+        ///Creation d'un objet contact contenant les informations de contact saisie par l'utilisateur
         const contact = {
             lastName: nom.value,
             firstName: prenom.value,
@@ -172,35 +177,38 @@ form.addEventListener("submit", function (event) {
             email: email.value
         }
 
-        // Création d'une variables "products" qui contient les informations du panier
+        // Création d'un objet "products" qui contient les informations du panier
         monPanier = [];
         monPanier = JSON.parse(localStorage.getItem('items'));
         const products = [];
         for (let i = 0; i < monPanier.length; i++) {
-            products.push(monPanier[i].id.trim());
+            products.push(monPanier[i].id);
         }
 
-        let data = { contact, products } // Création d'une variable "data" qui contient les 2 éléments à transmettre au serveur
+        let data = { contact, products } // Création d'un objet global "data" qui contient les 2 éléments à transmettre au serveur
 
-        let achat = JSON.stringify(data);
+        let achat = JSON.stringify(data); //On converti notre objet global en format JSON
 
         let request = new XMLHttpRequest();
         request.onreadystatechange = function () {
             if (this.readyState == XMLHttpRequest.DONE) {
+                //Quand la requète est terminé, on recupère la réponse  
                 let confirmation = JSON.parse(this.responseText);
                 console.log(confirmation);
+                //on enregistre la réponse dans le local storage pour l'afficher dans confirmation.html
                 localStorage.setItem("confirmation", JSON.stringify(confirmation));
                 window.location.href = "confirmation.html";
             };
         };
 
+        //Envoi de la requète avec la méthode POST        
         request.open("post", "http://localhost:3000/api/cameras/order");
         request.setRequestHeader("Content-Type", "application/json");
         request.send(achat);
 
+        //Suppression du local storage après la confirmation de commande
         localStorage.clear();
     }
-
 })
 
 

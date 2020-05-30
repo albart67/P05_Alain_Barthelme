@@ -66,6 +66,7 @@ window.onload = function () {
     for (let i = 0; i < attToCartBtn.length; i++) {
         attToCartBtn[i].addEventListener("click", function (e) {
             if (typeof (Storage) !== 'undefined') {
+                //On crée un objet contenant le local storage 
                 const localItems = JSON.parse(localStorage.getItem("items"));
                 let item = {
                     id: document.getElementById("item-body-id").lastChild.textContent,
@@ -73,20 +74,23 @@ window.onload = function () {
                     price: document.getElementById("item-body-price").lastChild.textContent,
                     no: 1
                 };
+                //Si le local storage est vide on envoi le premier ojbet article dans le local storage
                 if (localItems === null) {
                     items.push(item);
                     localStorage.setItem("items", JSON.stringify(items));
                     window.location.reload();
                 } else {
-                    localItems.filter(data => {
+                    localItems.find(data => {
+                        //Si l'objet localItems contient déja un article similaire, on augmente la quantité de l'article sselectionné de 1
                         if (item.id == data.id) {
                             item.no = data.no + 1;
                         } else {
+                            //Si un article similaire n'est pas présent on charge le local storage dans l'objet items
                             items.push(data);
                         }
                     });
-                    items.push(item);
-                    localStorage.setItem('items', JSON.stringify(items));
+                    items.push(item); //on rajoute l'article selectionné dans l'objet items
+                    localStorage.setItem('items', JSON.stringify(items)); //on recharge le local storage avec l'objet items stringifié
                     window.location.reload();
                 }
             } else {
@@ -100,7 +104,7 @@ window.onload = function () {
         const iconShoppingP = document.querySelector('.iconShopping p');
 
         let no = 0;
-        JSON.parse(localStorage.getItem('items')).filter(data => {
+        JSON.parse(localStorage.getItem('items')).find(data => {
             no = no + data.no
         });
         iconShoppingP.innerHTML = no;
